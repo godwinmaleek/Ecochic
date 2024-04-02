@@ -16,18 +16,123 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  cursor: none;
+}
+
+body *:hover {
+  cursor: none;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: Nohemi-black;
+  src: url(../../public/font/nohemi/Nohemi-Black-BF6438cc5874bd2.otf);
+}
+@font-face {
+  font-family: Nohemi-extrabold;
+  src: url(../../public/font/nohemi/Nohemi-ExtraBold-BF6438cc58a4c3c.otf);
+}
+@font-face {
+  font-family: Nohemi-bold;
+  src: url(../../public/font/nohemi/Nohemi-Bold-BF6438cc5812315.otf);
+}
+@font-face {
+  font-family: Nohemi-semibold;
+  src: url(../../public/font/nohemi/Nohemi-SemiBold-BF6438cc588b5e5.otf);
+}
+@font-face {
+  font-family: Nohemi-medium;
+  src: url(../../public/font/nohemi/Nohemi-Medium-BF6438cc581a509.otf);
+}
+@font-face {
+  font-family: Nohemi-regular;
+  src: url(../../public/font/nohemi/Nohemi-Regular-BF6438cc58b98fc.otf);
+}
+@font-face {
+  font-family: Nohemi-light;
+  src: url(../../public/font/nohemi/Nohemi-Light-BF6438cc583f70b.otf);
+}
+@font-face {
+  font-family: Nohemi-extralight;
+  src: url(../../public/font/nohemi/Nohemi-ExtraLight-BF6438cc57e06d5.otf);
+}
+@font-face {
+  font-family: Nohemi-thin;
+  src: url(../../public/font/nohemi/Nohemi-Thin-BF6438cc577ef3b.otf);
+}
+
+.heroBg {
+  background-position: center;
+  background-size: 100%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(64, 71, 51, 0.8) 66.093%,
+      rgba(64, 71, 51, 0.18) 81.422%,
+      rgba(107, 118, 86, 0.18) 92.643%,
+      rgba(0, 0, 0, 0) 114.844%
+    ),
+    url("../../public/img/heroBg.jpg");
+}
+
+.heroBg {
+  font-family: Nohemi-regular;
+}
+.logo {
+  font-family: Nohemi-extralight;
+}
+
+.nav-bar nav a {
+  font-family: Nohemi-regular;
+}
+
+.font-900 {
+  font-family: Nohemi-black;
+}
+.font-800 {
+  font-family: Nohemi-extrabold;
+}
+.font-700 {
+  font-family: Nohemi-bold;
+}
+.font-600 {
+  font-family: Nohemi-semibold;
+}
+.font-500 {
+  font-family: Nohemi-medium;
+}
+.font-400 {
+  font-family: Nohemi-regular;
+}
+.font-300 {
+  font-family: Nohemi-light;
+}
+.font-200 {
+  font-family: Nohemi-extralight;
+}
+.font-100 {
+  font-family: Nohemi-thin;
+}
+
+.cursor {
+  /* position: fixed;
+  height: 32px;
+  width: 32px;
+  transform: translate(-50%, -50%); */
+
+  /* background-color: black; */
+  /* border-radius: 100%; */
+  /* mix-blend-mode: difference */
+  /* z-index: 9999999999999 !important;
+  pointer-events: none; */
 }

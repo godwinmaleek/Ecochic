@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 868px auto;
+  column-gap: 131px;
+}
+
+.wrapper.rtl {
+  grid-template-columns: auto 868px;
+}
+
+.wrapper.rtl > .col2 {
+  grid-row-start: 1;
+}

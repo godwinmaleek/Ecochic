@@ -1,0 +1,66 @@
+{
+  "maleProduct": [
+    {
+      "imgSrc": "/img/menEcoChic/1.jpg",
+      "description": "the yezid overshirt",
+      "price": "$490.00",
+      "id": 7
+    },
+    {
+      "imgSrc": "/img/menEcoChic/2.jpg",
+      "description": "the qowiy trench coat",
+      "price": "$490.00",
+      "id": 2
+    },
+    {
+      "imgSrc": "/img/menEcoChic/3.jpg",
+      "description": "just another shirt",
+      "price": "$490.00",
+      "id": 8
+    },
+    {
+      "imgSrc": "/img/menEcoChic/4.jpg",
+      "description": "random shirt?",
+      "price": "$490.00",
+      "id": 4
+    },
+    {
+      "imgSrc": "/img/menEcoChic/5.jpg",
+      "description": "i really don’t know",
+      "price": "$490.00",
+      "id": 10
+    }
+  ],
+  "femaleProduct": [
+    {
+      "imgSrc": "/img/womenEcoChic/1.jpg",
+      "description": "the mahabubah blouse",
+      "price": "$490.00",
+      "id": 1
+    },
+    {
+      "imgSrc": "/img/womenEcoChic/2.jpg",
+      "description": "transparent gown",
+      "price": "$490.00",
+      "id": 6
+    },
+    {
+      "imgSrc": "/img/womenEcoChic/3.jpg",
+      "description": "just another garment",
+      "price": "$490.00",
+      "id": 3
+    },
+    {
+      "imgSrc": "/img/womenEcoChic/4.jpg",
+      "description": "the tolu dress trouser?",
+      "price": "$490.00",
+      "id": 9
+    },
+    {
+      "imgSrc": "/img/womenEcoChic/5.jpg",
+      "description": "hmmmmmmm",
+      "price": "$490.00",
+      "id": 5
+    }
+  ]
+}
