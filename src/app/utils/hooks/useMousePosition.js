@@ -1,16 +1,19 @@
-// import { useEffect, useState } from "react";
+import useMouse from "@react-hook/mouse-position";
+import { useEffect, useState } from "react";
 
-// export default function useMousePosition() {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
+export default function useMousePosition(element = null, options = null) {
+  const [pageBody, setPageBody] = useState(null);
 
-//   function updateMousePostion(e) {
-//     setPosition({ x: e.clientX, y: e.clientY });
-//   }
-//   useEffect(() => {
-//     window.addEventListener("mousemove", updateMousePostion);
+  const mouse = useMouse(pageBody, {
+    ...options,
+  });
 
-//     return () => window.removeEventListener("mousemove", updateMousePostion);
-//   }, []);
+  useEffect(() => {
+    if (element) setPageBody(element);
+    else {
+      setPageBody(document.body);
+    }
+  }, [element]);
 
-//   return position;
-// }
+  return mouse;
+}

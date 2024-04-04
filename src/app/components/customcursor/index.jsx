@@ -1,20 +1,14 @@
 "use client";
 
+import useMousePosition from "@/app/utils/hooks/useMousePosition";
 import useMouse from "@react-hook/mouse-position";
 
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { Fragment, useEffect, useState } from "react";
 
 const Cursor = ({ animateTracker }) => {
-  const [pageBody, setPageBody] = useState(null);
-
-  const mouse = useMouse(pageBody, {
-    // enterDelay: 100,
-    // leaveDelay: 100,
-  });
-
+  const mouse = useMousePosition();
   useEffect(() => {
-    setPageBody(document.body);
     const cursors = document.querySelectorAll(".cursor");
     const removeCursor = () => {
       if (cursors) {
