@@ -1,4 +1,4 @@
-import { easeIn, motion } from "framer-motion";
+import { easeIn, easeOut, motion } from "framer-motion";
 import Image from "next/image";
 import { getMouseEnterDirection } from "../utils/helperFunction";
 import { useEffect, useRef, useState } from "react";
@@ -19,43 +19,46 @@ export default function Product({
   const [translateYValue, setTranslateYValue] = useState(0);
 
   function mouseIn() {
-    const direction = getMouseEnterDirection(
-      imgRef.current,
-      mouse.clientX,
-      mouse.clientY
-    );
-
+    const direction = getMouseEnterDirection(mouse, imgRef.current);
     if (direction === "left") {
-      return setTranslateXValue(-15);
+      return setTranslateXValue(-18);
     } else if (direction === "right") {
-      return setTranslateXValue(15);
+      return setTranslateXValue(18);
     } else if (direction === "top") {
-      return setTranslateYValue(-15);
+      return setTranslateYValue(-18);
     } else if (direction === "bottom") {
-      return setTranslateYValue(15);
-    } else return 0;
+      return setTranslateYValue(18);
+    } else return setTranslateXValue(-18);
   }
 
   const imageVariant = {
+    initial: {
+      x: 0,
+    },
+
+    exit: {
+      x: 0,
+      y: 0,
+    },
     translate: {
       x: translateXValue,
       y: translateYValue,
-      scaleX: 1.1,
-      scaleY: 1.1,
-      scaleZ: 1.1,
+
       filter: "grayscale(40%)",
 
-      transition: { ease: easeIn },
+      transition: { ease: easeOut },
     },
   };
 
   return (
     <motion.div className="w-full" ref={productCardref}>
-      <div className="h-80 w-60 overflow-hidden relative">
+      <div className="h-80 w-60 overflow-hidden relative grid place-items-center">
         <motion.div
           variants={imageVariant}
+          initial={"initial"}
+          exit={"exit"}
           whileHover={"translate"}
-          className="bg-cover bg-no-repeat bg-center w-full h-full absolute left-0 top-0"
+          className="bg-cover bg-no-repeat bg-center w-[115%] h-[115%]"
           style={{
             backgroundImage: `url(${imgSrc})`,
             // transform: "scale3d(1.3,1.3,1.3)",

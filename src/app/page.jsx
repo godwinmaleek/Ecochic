@@ -1,28 +1,25 @@
 "use client";
 
 import { Fragment, useState } from "react";
-import Header from "./components/header";
-
 import productCollection from "./utils/data/collection.json";
 import Product from "./components/product";
-import Nav from "./components/nav";
 import Button from "./components/button";
 import CollectionSection from "./components/collectionSection/collectionSection";
 import ShopCollection from "./components/shopCollection";
 import Image from "next/image";
 import CollectionGrid from "./components/shopCollection/components/grid";
-import Footer from "./components/footer";
-import Cursor, { textHover } from "./components/customcursor";
 import { motion } from "framer-motion";
+
+import AbstractApp from "./components/abstractApp";
 
 export default function Home() {
   const [trackerAnimation, setTrackerAnimation] = useState("default");
   return (
     <Fragment>
-      <Cursor animateTracker={trackerAnimation}></Cursor>
-      <Header></Header>
-      <div className="px-16 pb-24">
-        <Nav></Nav>
+      <AbstractApp
+        trackerAnimation={trackerAnimation}
+        setTrackerAnimation={setTrackerAnimation}
+      >
         <main>
           <div className="heroBg w-full h-[640px] px-8 py-16 flex items-end text-white bg-no-repeat bg-cover">
             <div className="gap-x-16 grid grid-cols-[60%_auto] w-full items-center">
@@ -31,11 +28,7 @@ export default function Home() {
                 <br /> = sustainable fashion.
               </motion.h1>
               <div className="">
-                <p
-                  // onMouseEnter={() => setTrackerAnimation("texthover")}
-                  // onMouseLeave={() => setTrackerAnimation("")}
-                  className="text-xl pb-4"
-                >
+                <p className="text-xl pb-4">
                   combining ethics and aesthetics in perfect harmony,
                   sustainable fashion emerges as a powerful force shaping a
                   stylish and responsible future.
@@ -249,10 +242,8 @@ export default function Home() {
               </Button>
             </form>
           </section>
-
-          <Footer></Footer>
         </main>
-      </div>
+      </AbstractApp>
     </Fragment>
   );
 }

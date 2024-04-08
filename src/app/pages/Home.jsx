@@ -1,16 +1,16 @@
 "use client";
 import { Fragment, useState } from "react";
-import Header from "./components/header";
+import Header from "../components/header";
 import productCollection from "./utils/data/collection.json";
-import Product from "./components/product";
-import Nav from "./components/nav";
-import Button from "./components/button";
-import CollectionSection from "./components/collectionSection/collectionSection";
-import ShopCollection from "./components/shopCollection";
+import Product from "../components/product";
+import Nav from "../components/nav";
+import Button from "../components/button";
+import CollectionSection from "../components/collectionSection/collectionSection";
+import ShopCollection from "../components/shopCollection";
 import Image from "next/image";
-import CollectionGrid from "./components/shopCollection/components/grid";
-import Footer from "./components/footer";
-import Cursor from "./components/customcursor";
+import CollectionGrid from "../components/shopCollection/components/grid";
+import Footer from "../components/footer";
+import Cursor from "../components/customcursor";
 import { motion } from "framer-motion";
 
 export default function Home() {
