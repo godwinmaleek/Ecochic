@@ -112,9 +112,11 @@ body *:hover {
   font-family: Nohemi-medium;
 }
 .font-400 {
+  letter-spacing: 1px;
   font-family: Nohemi-regular;
 }
 .font-300 {
+  letter-spacing: 1px;
   font-family: Nohemi-light;
 }
 .font-200 {
