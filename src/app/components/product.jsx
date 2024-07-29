@@ -1,8 +1,8 @@
 import { easeIn, easeOut, motion } from "framer-motion";
 import Image from "next/image";
 import { getMouseEnterDirection } from "../utils/helperFunction";
-import { useEffect, useRef, useState } from "react";
-import useMouse from "@react-hook/mouse-position";
+import { useRef, useState } from "react";
+
 import useMousePosition from "../utils/hooks/useMousePosition";
 
 export default function Product({
@@ -11,7 +11,7 @@ export default function Product({
   handleMouseLeave,
 }) {
   const imgRef = useRef();
-  const productCardref = useRef();
+  const productCardRef = useRef();
   const { imgSrc, description, price } = productInfo;
   const mouse = useMousePosition();
 
@@ -44,15 +44,15 @@ export default function Product({
       x: translateXValue,
       y: translateYValue,
 
-      filter: "grayscale(40%)",
+      filter: "grayscale(50%)",
 
       transition: { ease: easeOut },
     },
   };
 
   return (
-    <motion.div className="w-full" ref={productCardref}>
-      <div className="h-80 w-60 overflow-hidden relative grid place-items-center">
+    <motion.div className="w-full" ref={productCardRef}>
+      {/* <div className="h-80 w-60 overflow-hidden relative grid place-items-center">
         <motion.div
           variants={imageVariant}
           initial={"initial"}
@@ -61,9 +61,7 @@ export default function Product({
           className="bg-cover bg-no-repeat bg-center w-[115%] h-[115%]"
           style={{
             backgroundImage: `url(${imgSrc})`,
-            // transform: "scale3d(1.3,1.3,1.3)",
           }}
-          // style={{  }}
           ref={imgRef}
           onMouseEnter={() => {
             handleMouseEnter();
@@ -75,8 +73,8 @@ export default function Product({
             setTranslateYValue(0);
           }}
         ></motion.div>
-      </div>
-      {/* <Image
+      </div> */}
+      <Image
         variants={imageVariant}
         animate={"translate"}
         height={320}
@@ -94,7 +92,7 @@ export default function Product({
         src={imgSrc}
         alt={description}
         loading="lazy"
-      ></Image> */}
+      ></Image>
       <div className="pt-4 text">
         <p className="underline text-xl">{description}</p>
         <p className="pt-2 text-base font-500">{price}</p>

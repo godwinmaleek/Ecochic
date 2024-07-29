@@ -1,14 +1,18 @@
 "use client";
 
+import { useState } from "react";
+
 import AbstractApp from "@/app/components/abstractApp";
 import Button from "@/app/components/button";
 import SignUpNewsLetter from "@/app/components/newsletter";
 import ProductRating from "@/app/components/rating";
 import FilterButton from "@/app/components/shopCollection/components/button";
-import Image from "next/image";
 
-import { useState } from "react";
-import ProductInfoAccordion from "../components/productInfoAccordion";
+import ProductInfoAccordion from "../components/ProductInfoAccordion";
+import ProductReview from "../components/ProductReview";
+import ProductComments from "../components/ProductComments";
+
+import Image from "next/image";
 
 export default function ProductDetails() {
   const [trackerAnimation, setTrackerAnimation] = useState("default");
@@ -32,7 +36,7 @@ export default function ProductDetails() {
               alt=""
               quality={100}
               style={{ height: "801px", width: "646px" }}
-            ></Image>
+            />
           </div>
 
           <div className="w-[113px] absolute flex flex-col gap-[10px] top-10 left-4">
@@ -50,7 +54,7 @@ export default function ProductDetails() {
                 alt=""
                 quality={100}
                 style={{ maxHeight: "16rem" }}
-              ></Image>
+              />
             </div>
             <div
               width={113}
@@ -82,16 +86,23 @@ export default function ProductDetails() {
                 src={"/img/menEcoChic/1.jpg"}
                 alt=""
                 quality={100}
-                style={{ height: "100px" }}
+                style={{ height: "6.25rem" }}
               ></Image>
             </div>
           </div>
         </div>
+
         <div className="w-[40%]">
-          <div className="flex text-[#666666] font-400 pb-6 border-b border-[#DFDFDF] ">
-            <span>collection&nbsp;/</span>
-            <span>&nbsp;men&apos;s fall&nbsp;</span>/
-            <span className="text-black">&nbsp;the yezid overshirt</span>
+          <div className="pb-6 border-b border-[#DFDFDF] ">
+            <span className="body-text-md font-300">collection&nbsp;/</span>
+            {/* <span>&nbsp;men&apos;s fall&nbsp;</span>/ */}
+            <span className="body-text-md font-300">
+              &nbsp;men’s fall&nbsp;
+            </span>
+            /
+            <span className="body-text-md text-black">
+              &nbsp;the yezid overshirt
+            </span>
           </div>
           <div className="mt-10">
             <h1 className="font-400 text-[40px] text-black">
@@ -114,7 +125,10 @@ export default function ProductDetails() {
               <span className="size-10 bg-[#974E7C]"></span>
             </div>
           </div>
-          <ProductRating rating={3} />
+          <div className="flex items-center gap-[.8125rem]">
+            <ProductRating rating={3} />
+            <span className="text-sm font-300 text-[#666]">(206 reviews)</span>
+          </div>
 
           <div className="flex gap-x-2 mt-10">
             <span className="text-xl font-400 text-black ">$490.00</span>
@@ -122,13 +136,34 @@ export default function ProductDetails() {
           </div>
           <Button
             color={"black"}
-            extraClasses={
+            arrowType={"RIGHT"}
+            className={
               "w-full flex items-center justify-center border-black mt-7 mb-10"
             }
           >
             add to cart
           </Button>
           <ProductInfoAccordion />
+        </div>
+      </div>
+      <div className=" ">
+        <div className="pb-[3.1875rem] border-b border-[#DFDFDF]">
+          <ProductReview />
+        </div>
+
+        <div className="flex flex-col gap-y-10 py-[3.1875rem]">
+          <ProductComments />
+          <ProductComments />
+        </div>
+
+        <div className="w-full grid place-items-center">
+          <Button
+            color={"black"}
+            arrowType={"DOWN"}
+            className="border-black gap-x-[.625rem]"
+          >
+            read more reviews
+          </Button>
         </div>
       </div>
       <SignUpNewsLetter />

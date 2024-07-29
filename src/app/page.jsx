@@ -72,7 +72,7 @@ export default function Home() {
                 {productCollection.maleProduct.map((product, key) => {
                   return (
                     <Product
-                      handleMouseEnter={() => setTrackerAnimation("texthover")}
+                      handleMouseEnter={() => setTrackerAnimation("textHover")}
                       handleMouseLeave={() => setTrackerAnimation("default")}
                       key={key}
                       productInfo={product}
@@ -95,7 +95,7 @@ export default function Home() {
                 {productCollection.femaleProduct.map((product, key) => {
                   return (
                     <Product
-                      handleMouseEnter={() => setTrackerAnimation("texthover")}
+                      handleMouseEnter={() => setTrackerAnimation("textHover")}
                       handleMouseLeave={() => setTrackerAnimation("default")}
                       key={key}
                       productInfo={product}
@@ -107,7 +107,7 @@ export default function Home() {
           </section>
 
           <ShopCollection
-            handleMouseEnter={() => setTrackerAnimation("texthover")}
+            handleMouseEnter={() => setTrackerAnimation("textHover")}
             handleMouseLeave={() => setTrackerAnimation("default")}
           />
 
@@ -205,7 +205,7 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-            <div className="h-[30rem] bg-[url('/img/Rectangle7.jpg')] bg-center bg-cover"></div>
+            <div className="h-[30rem] bg-[url('/img/Rectangle7.jpg')] bg-center bg-cover" />
           </section>
 
           <SignUpNewsLetter />

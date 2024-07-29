@@ -48,7 +48,7 @@ export default function CollectionSection({
           fashion emerges as a powerful force shaping a stylish and responsible
           future.
         </p>
-        <Button color={"#000"} extraClasses={"border-black"}>
+        <Button color={"#000"} className={"border-black"}>
           see collection
         </Button>
       </div>

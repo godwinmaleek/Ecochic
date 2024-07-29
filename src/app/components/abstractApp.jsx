@@ -15,7 +15,7 @@ export default function AbstractApp({
     <Fragment>
       <Cursor animateTracker={trackerAnimation}></Cursor>
       <Header></Header>
-      <div className="px-16 pb-24">
+      <div className="px-16 pb-24 relative">
         <Nav></Nav>
         {children}
         <Footer></Footer>

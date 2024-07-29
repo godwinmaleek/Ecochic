@@ -38,7 +38,7 @@ export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
             );
           })}
       </CollectionGrid>
-      <Button color={"black"} extraClasses="mt-20 mx-auto border-black">
+      <Button color={"black"} className="mt-20 mx-auto border-black">
         explore all pieces
       </Button>
     </section>

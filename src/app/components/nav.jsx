@@ -1,6 +1,6 @@
 export default function Nav() {
   return (
-    <div className="flex justify-between items-center py-7 nav-bar">
+    <div className="flex justify-between items-center py-7 nav-bar sticky top-0 bg-white z-50">
       <nav className="flex justify-between items-center gap-x-8">
         <a href="#">men</a>
         <a href="#">women</a>

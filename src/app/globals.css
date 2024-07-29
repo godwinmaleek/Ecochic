@@ -8,14 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,9 +21,11 @@ body *:hover {
   cursor: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
@@ -72,6 +66,99 @@ body *:hover {
   src: url(../../public/font/nohemi/Nohemi-Thin-BF6438cc577ef3b.otf);
 }
 
+@layer components {
+  /* typography */
+  .headline-lg {
+    font-size: 4.5rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 5rem;
+    color: #000;
+  }
+
+  .headline-md {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 3.5rem;
+    color: #000;
+  }
+
+  .headline-sm {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 2.5rem;
+    color: #000;
+  }
+
+  .body-text-lg {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 1.75rem;
+    color: #666;
+  }
+
+  .body-text-md {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 24px;
+    color: #666;
+  }
+
+  .body-text-sm {
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-regular;
+    line-height: 1.25rem;
+    color: #666;
+  }
+
+  .caption {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: Nohemi-semibold;
+    line-height: 2rem;
+    color: #000;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-900 {
+    font-family: Nohemi-black;
+  }
+  .font-800 {
+    font-family: Nohemi-extrabold;
+  }
+  .font-700 {
+    font-family: Nohemi-bold;
+  }
+  .font-600 {
+    font-family: Nohemi-semibold;
+  }
+  .font-500 {
+    font-family: Nohemi-medium;
+  }
+  .font-400 {
+    font-family: Nohemi-regular;
+  }
+  .font-300 {
+    font-family: Nohemi-light;
+  }
+  .font-200 {
+    font-family: Nohemi-extralight;
+  }
+  .font-100 {
+    font-family: Nohemi-thin;
+  }
+}
+
 .heroBg {
   background-position: center;
   background-size: 100%;
@@ -94,49 +181,6 @@ body *:hover {
 
 .nav-bar nav a {
   font-family: Nohemi-regular;
-}
-
-.font-900 {
-  font-family: Nohemi-black;
-}
-.font-800 {
-  font-family: Nohemi-extrabold;
-}
-.font-700 {
-  font-family: Nohemi-bold;
-}
-.font-600 {
-  font-family: Nohemi-semibold;
-}
-.font-500 {
-  font-family: Nohemi-medium;
-}
-.font-400 {
-  letter-spacing: 1px;
-  font-family: Nohemi-regular;
-}
-.font-300 {
-  letter-spacing: 1px;
-  font-family: Nohemi-light;
-}
-.font-200 {
-  font-family: Nohemi-extralight;
-}
-.font-100 {
-  font-family: Nohemi-thin;
-}
-
-.cursor {
-  /* position: fixed;
-  height: 32px;
-  width: 32px;
-  transform: translate(-50%, -50%); */
-
-  /* background-color: black; */
-  /* border-radius: 100%; */
-  /* mix-blend-mode: difference */
-  /* z-index: 9999999999999 !important;
-  pointer-events: none; */
 }
 
 .productImg {

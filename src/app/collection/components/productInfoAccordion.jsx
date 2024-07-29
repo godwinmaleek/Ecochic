@@ -1,55 +1,33 @@
 "use client";
 
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function ProductInfoAccordion() {
-  const [showIndex, setIndex] = useState("null");
+  const [showIndex, setShowIndex] = useState("null");
   const showDetails = {
-    // initial: {
-    //   opacity: 0,
-    //   maxHeight: 0,
-    // },
-    // show: {
-    //   opacity: 1,
-    //   maxHeight: 400,
-    //   transition: {
-    //     opacity: {
-    //       duration: 0.5,
-    //       delay: 0.3,
-    //     },
-    //     maxHeight: {
-    //       duration: 0.1,
-    //       delay: 0.6,
-    //     },
-    //     ease: easeInOut,
-    //   },
-    // },
-
     initial: {
       opacity: 0,
       height: 0,
-      //   overflow: "hidden",
-      //   transition: {
-      //     opacity: { duration: 0.3 },
-      //   },
+      transition: {
+        duration: 0.5,
+      },
     },
     show: {
       opacity: 1,
-      height: "auto", // Use auto to manage height transition smoothly
+      height: "auto",
       transition: {
-        opacity: { duration: 0.5 },
-        height: { duration: 0.3, delay: 0.3 },
+        duration: 0.5,
       },
     },
   };
-  const handleShowAccordion = (index) => {};
+
   return (
     <div className="flex flex-col gap-y-3.5">
-      <div className="font-300 text-base text-[#666]">
+      <div className="font-300 body-text-md ">
         <div
-          onClick={() => setIndex((prev) => (prev === 1 ? null : 1))}
-          className="underline"
+          onClick={() => setShowIndex((prev) => (prev === 1 ? null : 1))}
+          className="underline z-10 relative"
         >
           materials, care & production
         </div>
@@ -65,12 +43,12 @@ export default function ProductInfoAccordion() {
           <li>— design: Nomen Nescio Oy, Helsinki, Finland</li>
         </motion.ul>
       </div>
-      <div className="font-300 text-base text-[#666]">
+      <div className="font-300 body-text-md">
         <div
-          onClick={() => setIndex((prev) => (prev === 2 ? null : 2))}
-          className="underline"
+          onClick={() => setShowIndex((prev) => (prev === 2 ? null : 2))}
+          className="underline z-10 relative"
         >
-          materials, care & production
+          size guide
         </div>
         <motion.ul
           variants={showDetails}
@@ -84,12 +62,12 @@ export default function ProductInfoAccordion() {
           <li>— design: Nomen Nescio Oy, Helsinki, Finland</li>
         </motion.ul>
       </div>
-      <div className="font-300 text-base text-[#666]">
+      <div className="font-300 body-text-md">
         <div
-          onClick={() => setIndex((prev) => (prev === 3 ? null : 3))}
-          className="underline"
+          onClick={() => setShowIndex((prev) => (prev === 3 ? null : 3))}
+          className="underline z-10 relative"
         >
-          materials, care & production
+          shipping and returns
         </div>
         <motion.ul
           variants={showDetails}

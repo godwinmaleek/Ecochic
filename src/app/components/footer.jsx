@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="mt-40 divide-solid divide-y divide-[#CCCCCC]">
-      <div className="text-base flex gap-20 xl:w-[614px]">
+      <div className="text-base flex gap-20">
         <div className="">
           <p className="font-600 mb-2 text-black">shop</p>
           <div className="text-[#666666] font-400 flex flex-col gap-y-2">

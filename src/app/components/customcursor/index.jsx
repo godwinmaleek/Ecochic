@@ -36,7 +36,7 @@ const Cursor = ({ animateTracker }) => {
       x: mouse.clientX - 16,
       y: mouse.clientY - 16,
     },
-    texthover: {
+    textHover: {
       x: mouse.clientX - 32,
       y: mouse.clientY - 32,
       opacity: 0,
@@ -48,7 +48,7 @@ const Cursor = ({ animateTracker }) => {
       x: mouse.clientX - 4,
       y: mouse.clientY - 4,
     },
-    texthover: {
+    textHover: {
       opacity: 1,
       backgroundColor: "rgb(107 118 86)",
       height: 64,
@@ -64,7 +64,7 @@ const Cursor = ({ animateTracker }) => {
     },
   };
   const text = {
-    texthover: {
+    textHover: {
       opacity: 1,
       transition: {
         type: "spring",
@@ -74,24 +74,18 @@ const Cursor = ({ animateTracker }) => {
     },
   };
 
-  // const spring = {};
-
   return (
     <Fragment>
       <motion.div
         variants={mouseTrackerVariant}
         animate={animateTracker}
-        // animate={animateTracker}
-        // transition={spring}
-        className="hidden cursor h-8 w-8 border border-[#000] rounded-full fixed !z-[999999999]  duration-[150ms] pointer-events-none  "
+        className="hidden cursor h-8 w-8 border border-[#000] rounded-full fixed !z-[999999999]  duration-[100ms] pointer-events-none  "
         // style={{ left: `${x}px`, top: `${y}px` }}
       ></motion.div>
       <motion.div
-        // animate={animateTracker}
         animate={animateTracker}
         variants={mouseTrackerVariant2}
-        // transition={spring}
-        className="hidden justify-center items-center cursor h-2 w-2 bg-[#000] rounded-full fixed !z-[999999999]  duration-75  pointer-events-none  "
+        className="hidden justify-center items-center cursor h-2 w-2 bg-[#000] rounded-full fixed !z-[999999999]  duration-[10ms]  pointer-events-none  "
         // style={{ left: `${x}px`, top: `${y}px` }}
       >
         <motion.span

@@ -13,13 +13,13 @@ export default function SignUpNewsLetter() {
       </div>
       <form action="" className="w-80 font-400 pt-[6.25rem]">
         <div className="relative">
-          <label htmlFor="full name" className="text-base">
+          <label htmlFor="full_name" className="text-base">
             full name
           </label>
           <input
-            className="border-b-2 border-black bg-transparent w-full"
+            className="border-b-2 border-black bg-transparent w-full outline-0 border-0"
             type="text"
-            name="fullname"
+            name="full_name"
           />
         </div>
         <div className="relative mt-8">
@@ -27,12 +27,12 @@ export default function SignUpNewsLetter() {
             email address
           </label>
           <input
-            className="border-b-2 border-black bg-transparent w-full"
+            className="border-b-2 border-black bg-transparent w-full outline-0 border-0"
             type="email"
             name="email"
           />
         </div>
-        <Button color={"black"} extraClasses="border-black mt-10">
+        <Button color={"black"} className="border-black mt-10">
           sign up to our newsletter
         </Button>
       </form>
