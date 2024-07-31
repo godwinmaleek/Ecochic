@@ -13,6 +13,7 @@ import ProductReview from "../components/ProductReview";
 import ProductComments from "../components/ProductComments";
 
 import Image from "next/image";
+import ProductRelatedCollection from "../components/ProductRelatedCollection";
 
 export default function ProductDetails() {
   const [trackerAnimation, setTrackerAnimation] = useState("default");
@@ -166,6 +167,11 @@ export default function ProductDetails() {
           </Button>
         </div>
       </div>
+
+      <ProductRelatedCollection
+        trackerAnimation={trackerAnimation}
+        setTrackerAnimation={setTrackerAnimation}
+      />
       <SignUpNewsLetter />
     </AbstractApp>
   );

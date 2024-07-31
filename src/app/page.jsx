@@ -1,13 +1,13 @@
 "use client";
 
 import { Fragment, useState } from "react";
-import productCollection from "./utils/data/collection.json";
 import Product from "./components/product";
 import Button from "./components/button";
 import CollectionSection from "./components/collectionSection/collectionSection";
 import ShopCollection from "./components/shopCollection";
 import Image from "next/image";
 import CollectionGrid from "./components/shopCollection/components/grid";
+import productCollection from "./utils/data/collection.json";
 import { motion } from "framer-motion";
 
 import AbstractApp from "./components/abstractApp";
