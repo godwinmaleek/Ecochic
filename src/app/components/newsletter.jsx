@@ -32,7 +32,11 @@ export default function SignUpNewsLetter() {
             name="email"
           />
         </div>
-        <Button color={"black"} className="border-black mt-10">
+        <Button
+          color={"black"}
+          className="border-black mt-10"
+          arrowType={"RIGHT"}
+        >
           sign up to our newsletter
         </Button>
       </form>

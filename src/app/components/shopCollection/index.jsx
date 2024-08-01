@@ -1,9 +1,9 @@
 import Image from "next/image";
 import CollectionGrid from "./components/grid";
-import FilterButton from "./components/button";
 import Button from "../button";
 import Product from "../product";
 import productCollection from "../../utils/data/collection.json";
+import FilterDropdown from "../FilterDropdown";
 
 export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
   return (
@@ -20,8 +20,16 @@ export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
         </h3>
 
         <div className="flex gap-x-8">
-          <FilterButton>filter</FilterButton>
-          <FilterButton>sort</FilterButton>
+          <FilterDropdown
+            buttonText={"Sort"}
+            ItemList={[
+              "most popular",
+              "newly added",
+              "Price: high to low",
+              "Price: low to high",
+            ]}
+          />
+          <FilterDropdown buttonText={"Filter"} />
         </div>
       </div>
       <CollectionGrid>

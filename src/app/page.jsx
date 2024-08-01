@@ -35,7 +35,9 @@ export default function Home() {
                   stylish and responsible future.
                 </p>
 
-                <Button className="text-base">explore all</Button>
+                <Button className="text-base" arrowType={"RIGHT"}>
+                  explore all
+                </Button>
               </div>
             </div>
           </div>

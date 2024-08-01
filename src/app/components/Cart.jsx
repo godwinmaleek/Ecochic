@@ -113,9 +113,9 @@ const CartItem = () => {
               />
             </div>
             <div className="py-2 px-4 border border-black max-w-fit flex items-center gap-x-4">
-              <IconSubtract />
-              <span className="body-text-md text-black ">2</span>
-              <IconAdd />
+              <IconSubtract className={"cursor-pointer"} />
+              <span className="body-text-md text-black">2</span>
+              <IconAdd className={"cursor-pointer"} />
             </div>
           </div>
           <div className="flex items-center gap-x-2">
@@ -123,7 +123,7 @@ const CartItem = () => {
             <span className="body-text-sm font-300">(after taxes)</span>
           </div>
         </div>
-        <div className="size-fit ">
+        <div className="size-fit cursor-pointer">
           <IconClose />
         </div>
       </div>

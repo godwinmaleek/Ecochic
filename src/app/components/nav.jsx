@@ -1,3 +1,4 @@
+import Link from "next/link";
 import IconBag from "../utils/Icons/IconBag";
 import IconLens from "../utils/Icons/IconLens";
 
@@ -5,16 +6,30 @@ export default function Nav({ openCart }) {
   return (
     <div className="flex justify-between items-center py-7 nav-bar sticky top-0 bg-white z-50">
       <nav className="flex justify-between items-center gap-x-8">
-        <a href="#">men</a>
-        <a href="#">women</a>
-        <a href="#">bags</a>
-        <a href="#">jewelry</a>
+        <Link className="animate-link" href="#">
+          men
+        </Link>
+        <Link className="animate-link" href="#">
+          women
+        </Link>
+        <Link className="animate-link" href="#">
+          bags
+        </Link>
+        <Link className="animate-link" href="#">
+          jewelry
+        </Link>
       </nav>
-      <div className="text-[32px] tracking-widest logo">ecoChic</div>
+      <div className="text-[32px] tracking-widest logo">
+        <Link href={"/"}>ecoChic</Link>
+      </div>
       <nav className="flex justify-between items-center gap-x-[34px]">
         <div className="flex justify-between items-center gap-x-8">
-          <a href="#">about</a>
-          <a href="#">Sustainability</a>
+          <Link className="animate-link" href="#">
+            about
+          </Link>
+          <Link className="animate-link" href="#">
+            Sustainability
+          </Link>
         </div>
         <div className="flex justify-between items-center gap-x-9">
           <IconLens />
