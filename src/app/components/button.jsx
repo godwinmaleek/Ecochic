@@ -1,4 +1,6 @@
-import { animate, motion } from "framer-motion";
+"use client";
+
+import { motion } from "framer-motion";
 import { useState } from "react";
 import IconArrowRightStyle from "../utils/Icons/IconArrowRightStyle";
 import IconArrowDown from "../utils/Icons/IconArrowDown";

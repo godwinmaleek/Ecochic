@@ -22,14 +22,34 @@ export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
         <div className="flex gap-x-8">
           <FilterDropdown
             buttonText={"Sort"}
-            ItemList={[
+            ItemListArray={[
               "most popular",
               "newly added",
               "Price: high to low",
               "Price: low to high",
             ]}
           />
-          <FilterDropdown buttonText={"Filter"} />
+          <FilterDropdown
+            buttonText={"Filter"}
+            ItemListArray={[
+              {
+                name: "men",
+                options: ["shirts", "jackets", "trousers", "shoes"],
+              },
+              {
+                name: "women",
+                options: ["shirts", "jackets", "trousers", "shoes"],
+              },
+              {
+                name: "bag",
+                options: ["shirts", "jackets", "trousers", "shoes"],
+              },
+              {
+                name: "jewelry",
+                options: ["shirts", "jackets", "trousers", "shoes"],
+              },
+            ]}
+          />
         </div>
       </div>
       <CollectionGrid>
@@ -46,7 +66,11 @@ export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
             );
           })}
       </CollectionGrid>
-      <Button color={"black"} className="mt-20 mx-auto border-black">
+      <Button
+        color={"black"}
+        className="mt-20 mx-auto border-black"
+        arrowType={"RIGHT"}
+      >
         explore all pieces
       </Button>
     </section>

@@ -2,16 +2,17 @@ import * as Popover from "@radix-ui/react-popover";
 import Button from "./button";
 import IconClose from "../utils/Icons/IconClose";
 import CustomCheckbox from "./checkbox";
-import { useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import IconArrowDown from "../utils/Icons/IconArrowDown";
 
-export default function FilterDropdown({ buttonText, ItemList = [] }) {
+export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
   const isArrayOfObjects =
-    Array.isArray(ItemList) &&
-    ItemList.every((item) => typeof item === "object" && item !== null);
+    Array.isArray(ItemListArray) &&
+    ItemListArray.every((item) => typeof item === "object" && item !== null);
 
   const filterOptionWithCheckValue = useMemo(() => {
     if (isArrayOfObjects) {
-      return ItemList.map((item) => ({
+      return ItemListArray.map((item) => ({
         ...item,
         options: item.options.map((option) => ({
           label: option,
@@ -20,49 +21,96 @@ export default function FilterDropdown({ buttonText, ItemList = [] }) {
         })),
       }));
     } else {
-      return ItemList?.map((item) => ({
+      return ItemListArray?.map((item) => ({
         label: item,
         value: item,
         checked: false,
       }));
     }
-  }, [ItemList, isArrayOfObjects]);
+  }, [ItemListArray, isArrayOfObjects]);
 
   const [filterItemList, setFilterItemList] = useState(
     filterOptionWithCheckValue
   );
+  const [domLoaded, setDomLoaded] = useState(false);
+  const [selectedItemName, setSelectedItemName] = useState(null);
 
-  const handleChange = (label) => {
-    setFilterItemList((prevFilterItemList) =>
-      prevFilterItemList.map((item) => ({
-        ...item,
-        checked: item.label == label ? !item.checked : item.checked,
-      }))
-    );
-  };
-  const content = [
-    { name: "men", option: ["shirts", "jackets", "trousers", "shoes"] },
-    {
-      name: "women",
-      option: ["shirts", "jackets", "trousers", "shoes"],
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
+  const handleChange = useCallback(
+    (label) => {
+      setFilterItemList((prevFilterItemList) => {
+        if (isArrayOfObjects) {
+          return prevFilterItemList.map((item) => ({
+            ...item,
+            options: item.options.map((option) => ({
+              ...option,
+              checked:
+                item.name == selectedItemName && option.label == label
+                  ? !option.checked
+                  : option.checked,
+            })),
+          }));
+        } else {
+          return prevFilterItemList.map((option) => ({
+            ...option,
+            checked: option.label == label ? !option.checked : option.checked,
+          }));
+        }
+      });
     },
-    { name: "bag", option: ["shirts", "jackets", "trousers", "shoes"] },
-    {
-      name: "women",
-      option: ["shirts", "jackets", "trousers", "shoes"],
-    },
-  ];
+    [selectedItemName, isArrayOfObjects]
+  );
+
+  const renderOptionItems = useCallback(() => {
+    if (isArrayOfObjects && domLoaded) {
+      if (typeof selectedItemName == "string") {
+        return (
+          <OptionItemCheckList
+            optionArray={
+              filterItemList.find((item) => item.name === selectedItemName)
+                ?.options
+            }
+            onChange={(label) => handleChange(label)}
+          />
+        );
+      } else {
+        return (
+          <ItemList
+            onSelect={(value) => setSelectedItemName(value)}
+            itemArray={filterItemList}
+          />
+        );
+      }
+    } else {
+      return (
+        <OptionItemCheckList
+          optionArray={filterItemList}
+          onChange={(label) => handleChange(label)}
+        />
+      );
+    }
+  }, [
+    domLoaded,
+    isArrayOfObjects,
+    filterItemList,
+    selectedItemName,
+    handleChange,
+  ]);
 
   return (
     <Popover.Root className={"relative"}>
       <Popover.Trigger>
-        <Button
-          className={"border border-black"}
-          arrowType={"DOWN"}
-          color={"black"}
-        >
-          {buttonText}
-        </Button>
+        <div className="flex items-center gap-x-[.625rem] border border-black px-4 py-2">
+          <input
+            className={"body-text-md text-black"}
+            value={buttonText}
+            type="button"
+          />
+          <IconArrowDown />
+        </div>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
@@ -74,23 +122,31 @@ export default function FilterDropdown({ buttonText, ItemList = [] }) {
         >
           <div className="flex flex-col divide-y divide-black">
             <div className="flex justify-between items-center px-4 pt-4 pb-[1.125rem]">
-              <span className="body-text-md font-600 text-black">
-                {buttonText} by
-              </span>
-              <Popover.Close>
-                <IconClose />
-              </Popover.Close>
+              {selectedItemName ? (
+                <Fragment>
+                  <div
+                    onClick={() => setSelectedItemName(null)}
+                    className="flex items-center gap-[.625rem] cursor-pointer"
+                  >
+                    <IconArrowDown color="#666" className="rotate-90" />
+                    <span className="body-text-md font-600 text-black">
+                      {selectedItemName}
+                    </span>
+                  </div>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <span className="body-text-md font-600 text-black">
+                    {buttonText} by
+                  </span>
+                  <Popover.Close>
+                    <IconClose />
+                  </Popover.Close>
+                </Fragment>
+              )}
             </div>
 
-            {filterItemList?.map((option) => {
-              return (
-                <OptionItem
-                  key={option.label}
-                  option={option}
-                  onChange={() => handleChange(option.label)}
-                />
-              );
-            })}
+            {renderOptionItems()}
           </div>
         </Popover.Content>
       </Popover.Portal>
@@ -98,20 +154,54 @@ export default function FilterDropdown({ buttonText, ItemList = [] }) {
   );
 }
 
-const OptionItem = ({ onChange, option }) => {
+const OptionItemCheckList = ({ onChange, optionArray = [] }) => {
   return (
-    <div className="grid grid-cols-[1fr_16px] justify-between items-center px-4 py-[10px] group hover:bg-[#6B7656]/70 transition-all duration-300">
-      <label
-        htmlFor={option.label}
-        className="body-text-md group-hover:text-white group-hover:cursor-pointer transition-all duration-300 h-full"
-      >
-        {option.label}
-      </label>
-      <CustomCheckbox
-        id={option.label}
-        checked={option?.checked}
-        onChange={onChange}
-      />
-    </div>
+    <Fragment>
+      {optionArray?.map((option) => {
+        return (
+          <div
+            key={option.label}
+            className="grid grid-cols-[1fr_16px] justify-between items-center px-4 py-[10px] group hover:bg-[#6B7656]/10 transition-all duration-300"
+          >
+            <label
+              htmlFor={option.label}
+              className="body-text-md  group-hover:cursor-pointer transition-all duration-300 h-full"
+            >
+              {option.label}
+            </label>
+            <CustomCheckbox
+              id={option.label}
+              checked={option?.checked}
+              onChange={() => onChange(option.label)}
+            />
+          </div>
+        );
+      })}
+    </Fragment>
+  );
+};
+
+const ItemList = ({ onSelect, itemArray = [] }) => {
+  return (
+    <Fragment>
+      {itemArray?.map((item) => {
+        return (
+          <div
+            key={item.name}
+            onClick={() => onSelect(item.name)}
+            className="grid grid-cols-[1fr_16px] justify-between items-center px-4 py-[10px] group hover:bg-[#6B7656]/10 transition-all duration-300"
+          >
+            <label
+              htmlFor={item.name}
+              className="body-text-md  group-hover:cursor-pointer transition-all duration-300 h-full"
+            >
+              {item.name}
+            </label>
+
+            <IconArrowDown color="#666" className="-rotate-90" />
+          </div>
+        );
+      })}
+    </Fragment>
   );
 };
