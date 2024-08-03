@@ -1,5 +1,4 @@
 import * as Popover from "@radix-ui/react-popover";
-import Button from "./button";
 import IconClose from "../utils/Icons/IconClose";
 import CustomCheckbox from "./checkbox";
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
@@ -39,25 +38,25 @@ export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
     setDomLoaded(true);
   }, []);
 
+  const updateOptions = (optionLabel, options) =>
+    options.map((option) => ({
+      ...option,
+      checked: option.label === optionLabel ? !option.checked : option.checked,
+    }));
+
   const handleChange = useCallback(
-    (label) => {
+    (optionLabel) => {
       setFilterItemList((prevFilterItemList) => {
         if (isArrayOfObjects) {
           return prevFilterItemList.map((item) => ({
             ...item,
-            options: item.options.map((option) => ({
-              ...option,
-              checked:
-                item.name == selectedItemName && option.label == label
-                  ? !option.checked
-                  : option.checked,
-            })),
+            options:
+              selectedItemName === item.name
+                ? updateOptions(optionLabel, item.options)
+                : item.options,
           }));
         } else {
-          return prevFilterItemList.map((option) => ({
-            ...option,
-            checked: option.label == label ? !option.checked : option.checked,
-          }));
+          return updateOptions(optionLabel, prevFilterItemList);
         }
       });
     },
@@ -65,21 +64,23 @@ export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
   );
 
   const renderOptionItems = useCallback(() => {
-    if (isArrayOfObjects && domLoaded) {
-      if (typeof selectedItemName == "string") {
+    if (!domLoaded) return null;
+
+    if (isArrayOfObjects) {
+      if (typeof selectedItemName === "string") {
+        const selectedItem = filterItemList.find(
+          (item) => item.name === selectedItemName
+        );
         return (
           <OptionItemCheckList
-            optionArray={
-              filterItemList.find((item) => item.name === selectedItemName)
-                ?.options
-            }
-            onChange={(label) => handleChange(label)}
+            optionArray={selectedItem?.options || []}
+            onChange={(value) => handleChange(value)}
           />
         );
       } else {
         return (
           <ItemList
-            onSelect={(value) => setSelectedItemName(value)}
+            onSelect={(name) => setSelectedItemName(name)}
             itemArray={filterItemList}
           />
         );
@@ -88,7 +89,7 @@ export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
       return (
         <OptionItemCheckList
           optionArray={filterItemList}
-          onChange={(label) => handleChange(label)}
+          onChange={(value) => handleChange(value)}
         />
       );
     }
