@@ -6,8 +6,10 @@ import { useRef, useState } from "react";
 import useMousePosition from "../utils/hooks/useMousePosition";
 import ProductRating from "./rating";
 import Cursor from "./customcursor";
+import { useRouter } from "next/navigation";
 
 export default function Product({ productInfo }) {
+  const router = useRouter();
   const imgRef = useRef();
   const productCardRef = useRef();
   const { imgSrc, description, price } = productInfo;
@@ -85,6 +87,7 @@ export default function Product({ productInfo }) {
     <motion.div className="w-full" ref={productCardRef}>
       <Cursor />
       <motion.div
+        onClick={() => router.push("collection/details")}
         onMouseEnter={() => {
           handleHover();
         }}
