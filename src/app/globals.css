@@ -194,6 +194,7 @@ body *:hover {
 
 .animate-link {
   position: relative;
+  max-width: fit-content;
 }
 
 .animate-link::before {
@@ -214,4 +215,12 @@ body *:hover {
   -webkit-transform: scaleX(1);
   transform-origin: bottom right;
   -webkit-transform-origin: bottom right;
+}
+
+.product-clip-box_right {
+  clip-path: polygon(80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%, 0 0);
+}
+
+.product-clip-box_left {
+  clip-path: polygon(20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%, 0 20%);
 }

@@ -104,9 +104,9 @@ export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
   return (
     <Popover.Root className={"relative"}>
       <Popover.Trigger>
-        <div className="flex items-center gap-x-[.625rem] border border-black px-4 py-2">
+        <div className="flex items-center gap-x-[.625rem] border border-black px-4 py-2 ">
           <input
-            className={"body-text-md text-black"}
+            className={"body-text-md text-black cursor-pointer"}
             value={buttonText}
             type="button"
           />
@@ -118,7 +118,7 @@ export default function FilterDropdown({ buttonText, ItemListArray = [] }) {
           align="start"
           side="bottom"
           className={
-            "w-[24.8125rem] max-h-[14.625rem] border border-black bg-white mt-3 overflow-auto"
+            "w-[24.8125rem] max-h-[14.625rem] border border-black bg-white mt-3 mr-16 overflow-auto"
           }
         >
           <div className="flex flex-col divide-y divide-black">

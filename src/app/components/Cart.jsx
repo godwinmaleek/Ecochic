@@ -5,7 +5,9 @@ import IconClose from "../utils/Icons/IconClose";
 import IconSubtract from "../utils/Icons/IconSubtract";
 import IconAdd from "../utils/Icons/IconAdd";
 import { AnimatePresence, cubicBezier, motion } from "framer-motion";
+
 const easing = cubicBezier(0.16, 1, 0.3, 1);
+
 export default function Cart({ setOpen, open }) {
   const cartAnimationVariant = {
     hide: {

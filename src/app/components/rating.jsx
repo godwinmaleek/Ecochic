@@ -1,12 +1,12 @@
-export default function ProductRating({ rating, className }) {
+export default function ProductRating({ rating, width, height, className }) {
   const RATING_SCALE = 5;
   return (
     <div className={`flex items-center ${className}`}>
       {[...Array(RATING_SCALE).keys()].map((index) => (
         <svg
           key={index + "star"}
-          width="20"
-          height="20"
+          width={width ?? "20"}
+          height={height ?? "20"}
           viewBox="0 0 20 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
