@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -27,7 +25,7 @@ export default function ProductInfoAccordion() {
       <div className="font-300 body-text-md ">
         <div
           onClick={() => setShowIndex((prev) => (prev === 1 ? null : 1))}
-          className="underline z-10 relative"
+          className="underline z-10 relative cursor-pointer"
         >
           materials, care & production
         </div>
@@ -46,7 +44,7 @@ export default function ProductInfoAccordion() {
       <div className="font-300 body-text-md">
         <div
           onClick={() => setShowIndex((prev) => (prev === 2 ? null : 2))}
-          className="underline z-10 relative"
+          className="underline z-10 relative cursor-pointer"
         >
           size guide
         </div>
@@ -65,7 +63,7 @@ export default function ProductInfoAccordion() {
       <div className="font-300 body-text-md">
         <div
           onClick={() => setShowIndex((prev) => (prev === 3 ? null : 3))}
-          className="underline z-10 relative"
+          className="underline z-10 relative cursor-pointer"
         >
           shipping and returns
         </div>
