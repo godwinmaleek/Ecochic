@@ -8,12 +8,12 @@ import SignUpNewsLetter from "@/app/components/newsletter";
 import ProductRating from "@/app/components/rating";
 import FilterButton from "@/app/components/shopCollection/components/button";
 
-import ProductInfoAccordion from "../components/ProductInfoAccordion";
 import ProductReview from "../components/ProductReview";
 import ProductComments from "../components/ProductComments";
 
 import Image from "next/image";
 import ProductRelatedCollection from "../components/ProductRelatedCollection";
+import ProductInfoAccordion from "../components/ProductInfoAccordion";
 
 export default function ProductDetails() {
   const [trackerAnimation, setTrackerAnimation] = useState("default");
