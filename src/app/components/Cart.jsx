@@ -29,7 +29,7 @@ export default function Cart({ setOpen, open }) {
           className={"relative z-50"}
         >
           <motion.div
-            className="fixed inset-0 bg-black/10  backdrop-blur-sm"
+            className="fixed inset-0 bg-black/30  backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

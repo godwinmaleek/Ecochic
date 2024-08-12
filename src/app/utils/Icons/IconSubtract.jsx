@@ -8,7 +8,7 @@ export default function IconSubtract({ ...rest }) {
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <g clip-path="url(#clip0_44_7741)">
+      <g clipPath="url(#clip0_44_7741)">
         <path
           d="M4.16602 9.16675H15.8327V10.8334H4.16602V9.16675Z"
           fill="black"

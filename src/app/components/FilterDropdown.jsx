@@ -164,17 +164,17 @@ const OptionItemCheckList = ({ onChange, optionArray = [] }) => {
             key={option.label}
             className="grid grid-cols-[1fr_16px] justify-between items-center px-4 py-[10px] group hover:bg-[#6B7656]/10 transition-all duration-300"
           >
-            <label
-              htmlFor={option.label}
-              className="body-text-md  group-hover:cursor-pointer transition-all duration-300 h-full"
-            >
-              {option.label}
-            </label>
             <CustomCheckbox
               id={option.label}
               checked={option?.checked}
               onChange={() => onChange(option.label)}
             />
+            <label
+              htmlFor={option.label}
+              className="body-text-md -order-last  group-hover:cursor-pointer transition-all duration-300 h-full"
+            >
+              {option.label}
+            </label>
           </div>
         );
       })}
@@ -192,10 +192,7 @@ const ItemList = ({ onSelect, itemArray = [] }) => {
             onClick={() => onSelect(item.name)}
             className="grid grid-cols-[1fr_16px] justify-between items-center px-4 py-[10px] group hover:bg-[#6B7656]/10 transition-all duration-300"
           >
-            <label
-              htmlFor={item.name}
-              className="body-text-md  group-hover:cursor-pointer transition-all duration-300 h-full"
-            >
+            <label className="body-text-md  group-hover:cursor-pointer transition-all duration-300 h-full">
               {item.name}
             </label>
 

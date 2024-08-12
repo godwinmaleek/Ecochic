@@ -40,6 +40,7 @@ export default function SignUpNewsLetter() {
             full name
           </motion.label>
           <input
+            autoComplete="true"
             onFocus={() => setAnimateFullName(true)}
             onBlur={(e) => {
               if (!e.target.value) setAnimateFullName(false);
@@ -60,6 +61,7 @@ export default function SignUpNewsLetter() {
             email address
           </motion.label>
           <input
+            autoComplete="true"
             onFocus={() => setAnimateEmail(true)}
             onBlur={(e) => {
               if (!e.target.value) setAnimateEmail(false);

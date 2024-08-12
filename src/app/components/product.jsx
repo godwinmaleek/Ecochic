@@ -6,13 +6,12 @@ import { useRef, useState } from "react";
 import useMousePosition from "../utils/hooks/useMousePosition";
 import ProductRating from "./rating";
 import Cursor from "./customcursor";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Product({ productInfo }) {
-  const router = useRouter();
   const imgRef = useRef();
   const productCardRef = useRef();
-  const { imgSrc, description, price } = productInfo;
+  const { img, price, rating, views, name, id, collection } = productInfo;
   const mouse = useMousePosition();
 
   const [imgTranslateValue, setImgTranslateValue] = useState({ x: 0, y: 0 });
@@ -22,31 +21,17 @@ export default function Product({ productInfo }) {
   });
   const [isHovered, setIsHovered] = useState(false);
 
-  function getTranslateDirection(value = 20) {
-    const direction = getMouseEnterDirection(mouse, imgRef.current);
-
-    switch (direction) {
-      case "left":
-        return { x: -value, y: 0 };
-
-      case "right":
-        return { x: value, y: 0 };
-
-      case "top":
-        return { x: 0, y: -value };
-
-      case "bottom":
-        return { x: 0, y: value };
-
-      default:
-        return { x: -value, y: 0 };
-    }
-  }
-
   const handleHover = () => {
+    const IMG_TRANSLATE_VALUE = 10;
+    const CLIP_BOX_TRANSLATE_VALUE = 12;
+
     setIsHovered(true);
-    setClipBoxTranslateValue(getTranslateDirection(10));
-    setImgTranslateValue(getTranslateDirection(20));
+    setClipBoxTranslateValue(
+      getTranslateDirection(CLIP_BOX_TRANSLATE_VALUE, mouse, imgRef.current)
+    );
+    setImgTranslateValue(
+      getTranslateDirection(IMG_TRANSLATE_VALUE, mouse, imgRef.current)
+    );
   };
 
   const imageVariant = {
@@ -83,11 +68,24 @@ export default function Product({ productInfo }) {
     },
   };
 
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleViewProduct = () => {
+    const url = `/collection/${collection}/${id}`;
+
+    if (pathname.startsWith("/collection")) {
+      router.replace(url);
+    } else {
+      router.push(url);
+    }
+  };
+
   return (
     <motion.div className="w-full" ref={productCardRef}>
       <Cursor />
       <motion.div
-        onClick={() => router.push("collection/details")}
+        onClick={() => handleViewProduct()}
         onMouseEnter={() => {
           handleHover();
         }}
@@ -108,13 +106,13 @@ export default function Product({ productInfo }) {
           <Image
             className="w-full h-full absolute left-0 top-0 object-cover object-[50% 50%] cursor-pointer"
             style={{
-              transform: "scale3d(1.2,1.2,1.2)",
+              transform: "scale3d(1.1,1.1,1.1)",
             }}
             height={320}
             width={240}
-            src={imgSrc}
-            alt={description}
-            loading="lazy"
+            src={img}
+            alt={name}
+            priority
           />
         </motion.div>
         {/* <motion.div
@@ -134,15 +132,38 @@ export default function Product({ productInfo }) {
           className="product-clip-box_left body-text-lg text-white  absolute size-24 bg-[#81818126] backdrop-blur-sm p-4 flex flex-col bottom-3 left-3  -rotate-12 z-10"
         >
           <div className="flex flex-col items-center gap-[.625rem]">
-            <ProductRating height={16} width={16} rating={3} />
-            <span className="text-xs font-500 text-black">(206 reviews)</span>
+            <ProductRating height={16} width={16} rating={rating} />
+            <span className="text-xs font-500 text-black">
+              ({views} reviews)
+            </span>
           </div>
         </motion.div>
       </motion.div>
       <div className="pt-4 text">
-        <p className="underline text-xl">{description}</p>
-        <p className="pt-2 text-base font-500">{price}</p>
+        <p className="underline text-xl">{name}</p>
+        <p className="pt-2 text-base font-500">${price}</p>
       </div>
     </motion.div>
   );
+}
+
+function getTranslateDirection(value = 20, mousePosition, element) {
+  const direction = getMouseEnterDirection(mousePosition, element);
+
+  switch (direction) {
+    case "left":
+      return { x: -value, y: 0 };
+
+    case "right":
+      return { x: value, y: 0 };
+
+    case "top":
+      return { x: 0, y: -value };
+
+    case "bottom":
+      return { x: 0, y: value };
+
+    default:
+      return { x: -value, y: 0 };
+  }
 }

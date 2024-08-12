@@ -1,20 +1,33 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Product from "./components/product";
 import Button from "./components/button";
 import CollectionSection from "./components/collectionSection/collectionSection";
 import ShopCollection from "./components/shopCollection";
 import Image from "next/image";
 import CollectionGrid from "./components/shopCollection/components/grid";
-import productCollection from "./utils/data/collection.json";
 import { motion } from "framer-motion";
 
 import AbstractApp from "./components/abstractApp";
 import SignUpNewsLetter from "./components/newsletter";
+import { getProducts } from "./utils/data/mockData";
 
 export default function Home() {
   const [trackerAnimation, setTrackerAnimation] = useState("default");
+
+  const [products, setProducts] = useState({
+    men: [{}],
+    women: [{}],
+  });
+
+  useEffect(() => {
+    setProducts({
+      men: getProducts({ collection: "men" }),
+      women: getProducts({ collection: "women" }),
+    });
+  }, []);
+
   return (
     <Fragment>
       <AbstractApp
@@ -71,7 +84,7 @@ export default function Home() {
 
             <div className="mt-20">
               <CollectionGrid>
-                {productCollection.maleProduct.map((product, key) => {
+                {products.men.map((product, key) => {
                   return (
                     <Product
                       handleMouseEnter={() => setTrackerAnimation("textHover")}
@@ -94,7 +107,7 @@ export default function Home() {
 
             <div className=" mt-20">
               <CollectionGrid>
-                {productCollection.femaleProduct.map((product, key) => {
+                {products.women.map((product, key) => {
                   return (
                     <Product
                       handleMouseEnter={() => setTrackerAnimation("textHover")}

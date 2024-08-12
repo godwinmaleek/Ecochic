@@ -2,10 +2,16 @@ import Image from "next/image";
 import CollectionGrid from "./components/grid";
 import Button from "../button";
 import Product from "../product";
-import productCollection from "../../utils/data/collection.json";
 import FilterDropdown from "../FilterDropdown";
+import { useEffect, useState } from "react";
+import { getProducts } from "@/app/utils/data/mockData";
 
 export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
+  const [products, setProducts] = useState([{}]);
+
+  useEffect(() => {
+    setProducts(getProducts());
+  }, []);
   return (
     <section className=" mt-52">
       <div className="mb-16 flex justify-between">
@@ -53,18 +59,16 @@ export default function ShopCollection({ handleMouseEnter, handleMouseLeave }) {
         </div>
       </div>
       <CollectionGrid>
-        {[...productCollection.femaleProduct, ...productCollection.maleProduct]
-          .sort((a, b) => a.id - b.id)
-          .map((product, key) => {
-            return (
-              <Product
-                handleMouseEnter={handleMouseEnter}
-                handleMouseLeave={handleMouseLeave}
-                key={key + product.id}
-                productInfo={product}
-              />
-            );
-          })}
+        {products.map((product, key) => {
+          return (
+            <Product
+              handleMouseEnter={handleMouseEnter}
+              handleMouseLeave={handleMouseLeave}
+              key={key + product.id}
+              productInfo={product}
+            />
+          );
+        })}
       </CollectionGrid>
       <Button
         color={"black"}

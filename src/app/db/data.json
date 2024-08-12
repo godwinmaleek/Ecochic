@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "img": "url_to_image",
+      "name": "Men's Casual Shirt",
+      "description": "Comfortable cotton shirt for everyday wear",
+      "rating": 4.5,
+      "review": "Great fit and quality!",
+      "price": 49.99,
+      "collection": "men",
+      "category": "shirts"
+    },
+    {
+      "id": 2,
+      "img": "url_to_image",
+      "name": "Women's Leather Jacket",
+      "description": "Stylish leather jacket for cooler weather",
+      "rating": 4.8,
+      "review": "Love this jacket, very fashionable!",
+      "price": 199.99,
+      "collection": "women",
+      "category": "jackets"
+    }
+  ],
+  "collections": ["men", "women", "bags", "jewelry"],
+  "categories": ["shirts", "jackets", "trousers", "shoes"]
+}
