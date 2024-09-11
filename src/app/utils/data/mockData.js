@@ -19,7 +19,7 @@ const products = [
     name: "the qowiy trench coat",
     description:
       "Elegance meets functionality in the Qowiy Trench Coat. Crafted with water-resistant fabric and a timeless design, this coat effortlessly transitions from boardroom to evening soirée, embodying sophistication in every stitch.",
-    rating: 4,
+    rating: 5,
     review: "Love this product, very fashionable!",
     price: 480,
     views: 150,
